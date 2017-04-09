@@ -1,0 +1,39 @@
+<!--<resources>--><!--<string name="app_name">MyTimerApp</string>--><!--</resources>-->
+
+
+<resources>
+    <string name="app_name">MyTimerApp</string>
+    <string name="screenOutput_string">0</string>
+    <string name="button1_string">1</string>
+    <string name="button2_string">2</string>
+    <string name="button3_string">3</string>
+    <string name="button4_string">4</string>
+    <string name="button5_string">5</string>
+    <string name="button6_string">6</string>
+    <string name="button7_string">7</string>
+    <string name="button8_string">8</string>
+    <string name="button9_string">9</string>
+    <string name="buttonMult_string">x</string>
+    <string name="buttonDecimal_string">.</string>
+    <string name="button0_string">0</string>
+    <string name="buttonEquals_string">=</string>
+    <string name="buttonDiv_string">/</string>
+    <string name="buttonSub_string">-</string>
+    <string name="buttonAdd_string">+</string>
+    <string name="buttonClear_string">CLEAR</string>
+    <string name="buttonNeg_string">( - )</string>
+    <string name="buttonSqrt_string">SQRT</string>
+    <string name="buttonExp_string">^</string>
+
+
+    <string name="black_string">BLACK</string>
+    <string name="white_string">WHITE</string>
+    <string name="grey_string">GREY</string>
+
+    <string name="permission_read_phone_state_rationale">Fucking Give Me Phone Permission Bitch!!</string>
+    <string name="permissions_not_granted_read_phone_state">U Fucking Denied Me Bitch</string>
+
+    <string name="phoneMenu_SetPhoneNum_string">Set Phone Number</string>
+
+</resources>
+
