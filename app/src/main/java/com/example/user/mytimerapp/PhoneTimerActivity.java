@@ -309,6 +309,7 @@ public class PhoneTimerActivity extends AppCompatActivity {
 
     }
 
+    // Set the Timer
     public void setTimer(long totalTime){
         cdt = new CountDownTimer(totalTime, 1000) {
             @Override
@@ -323,19 +324,15 @@ public class PhoneTimerActivity extends AppCompatActivity {
                 clearDigits();
                 showTime();
 
-                // Play alarm sound
-//                Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//                Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-//                r.play();
-
+                // Make the Call
                 Intent makePhoneCall = new Intent(Intent.ACTION_CALL);
                 makePhoneCall.setData(Uri.parse(fullPhoneNumber));
                 try {
-//                    Log.i(TAG, "Trying to make the Fucking Phone Call");
+//                    Log.i(TAG, "Trying to make the Phone Call");
 //                    Log.i(TAG, "In Try: The fullPhoneNumber = " + fullPhoneNumber);
                     startActivity(makePhoneCall);
                 } catch(Exception e){
-//                    Log.i(TAG, "This is a Fucking Exception Bitch!");
+//                    Log.i(TAG, "This is a F-ing Exception!");
                     e.printStackTrace();
                 }
 
@@ -349,7 +346,7 @@ public class PhoneTimerActivity extends AppCompatActivity {
 
 
 
-
+//    May want this later
 //    public void loadIMEI(){
 //        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED){
 //            request
@@ -359,18 +356,23 @@ public class PhoneTimerActivity extends AppCompatActivity {
 
 
 
-// OverFlow Menu Methods
+    //----------------------------
+    //  OverFlow Menu Methods
+    //----------------------------
 
+    // Create the Overflow menu
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_phone_timer, menu);
         return true;
     }
 
 
+    // Deal with a selection
     public boolean onOptionsItemSelected(MenuItem item) {
         RelativeLayout main_view = (RelativeLayout) findViewById(R.id.relativeLayout_ID);
 
         switch (item.getItemId()) {
+            // Set to Black
             case R.id.menu_backgroundBlack_ID:
                 if (item.isCheckable()) {
                     item.setChecked(false);
@@ -379,6 +381,7 @@ public class PhoneTimerActivity extends AppCompatActivity {
                 }
                 main_view.setBackgroundColor(Color.BLACK);
                 return true;
+            // Set to White
             case R.id.menu_backgroundWhite_ID:
                 if (item.isCheckable()) {
                     item.setChecked(false);
@@ -387,6 +390,7 @@ public class PhoneTimerActivity extends AppCompatActivity {
                 }
                 main_view.setBackgroundColor(Color.WHITE);
                 return true;
+            // Set to Grey
             case R.id.menu_backgroundGrey_ID:
                 if (item.isCheckable()) {
                     item.setChecked(false);
@@ -403,6 +407,7 @@ public class PhoneTimerActivity extends AppCompatActivity {
     }
 
 
+    // Go to the phone number set activity
     public void phoneMenu_GoToPhoneNumSet(MenuItem item){
         Intent i = new Intent(this, SetPhoneNumActivity.class);
         startActivity(i);
@@ -411,13 +416,9 @@ public class PhoneTimerActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
+    //----------------------------------
+    //    Permission Requests
+    //----------------------------------
 
     /**
      * Called when this Activity is entered.
@@ -517,6 +518,7 @@ public class PhoneTimerActivity extends AppCompatActivity {
 
         /************************************************
          * **********************************************
+         * NOTES FOR FUTURE PROJECTS:
          * This is just an icing on the cake
          * the following are other children of TELEPHONY_SERVICE
          *

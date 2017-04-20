@@ -33,6 +33,7 @@ public class StopwatchActivity extends AppCompatActivity {
 
 
 
+    // The Start button was pressed
     public void startPressed(View view){
         startTime = SystemClock.uptimeMillis();
         myHandler.postDelayed(updateTimer, 0);
@@ -40,12 +41,17 @@ public class StopwatchActivity extends AppCompatActivity {
 
 
 
+    // The Stop button was pressed
     public void stopPressed(View view){
         timeSwapBuff += timeInMilliseconds;
         myHandler.removeCallbacks(updateTimer);
     }
 
+
+
+    // The Reset button was pressed
     public void resetPressed(View view){
+        // Clear everything out
         startTime = 0L;
         timeInMilliseconds = 0L;
         timeSwapBuff = 0L;
@@ -61,35 +67,17 @@ public class StopwatchActivity extends AppCompatActivity {
 
 
 
-
-//    public void msToDigits(long millis) {
-//
-//        long m = TimeUnit.MILLISECONDS.toMinutes(millis) -
-//                TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis))
-//
-//
-//
-//        String time = String.format("%02d:%02d:%02d",
-//                TimeUnit.MILLISECONDS.toHours(millis),
-//                TimeUnit.MILLISECONDS.toMinutes(millis) -
-//                        TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)), // The change is in this line
-//                TimeUnit.MILLISECONDS.toSeconds(millis) -
-//                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
-//
-//        digit6 = time.substring(0, 1);
-//        digit5 = time.substring(1, 2);
-//        digit4 = time.substring(3, 4);
-//        digit3 = time.substring(4, 5);
-//        digit2 = time.substring(6, 7);
-//        digit1 = time.substring(7);
-//
-//    }
-
+    // Show the time
     private void showTime() {
+        // Format the time
         String time = String.format("%02d:%02d:%02d", mins, secs, milliseconds);
+        // Display the time
         digitsTextView.setText(time);
     }
 
+
+
+    // The Timer logic
     public Runnable updateTimer = new Runnable() {
         @Override
         public void run() {

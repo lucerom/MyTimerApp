@@ -43,6 +43,10 @@ public class RegularTimerActivity2 extends AppCompatActivity {
     }
 
 
+    //-----------------------------
+    //    The Numeric Digits
+    //-----------------------------
+
     public void number0(View view){
         numberButtonPress("0");
     }
@@ -86,7 +90,9 @@ public class RegularTimerActivity2 extends AppCompatActivity {
 
 
 
+    // A number button was pressed
     public void numberButtonPress(String num) {
+        // Rotate the digits down
         if(!inProgress) {
             digit6 = digit5;
             digit5 = digit4;
@@ -95,6 +101,7 @@ public class RegularTimerActivity2 extends AppCompatActivity {
             digit2 = digit1;
             digit1 = num;
 
+            // Show the digits
             showTime();
             resume = false;
         }
@@ -102,8 +109,10 @@ public class RegularTimerActivity2 extends AppCompatActivity {
 
 
 
+    // The delete button was pressed
     public void deletePressed(View view){
         if(!inProgress) {
+            // Rotate the digits back up
             digit1 = digit2;
             digit2 = digit3;
             digit3 = digit4;
@@ -111,6 +120,7 @@ public class RegularTimerActivity2 extends AppCompatActivity {
             digit5 = digit6;
             digit6 = "0";
 
+            // Show the digits
             showTime();
             resume = false;
         }
@@ -119,7 +129,9 @@ public class RegularTimerActivity2 extends AppCompatActivity {
 
 
 
+    // The Clear button was pressed
     public void clearPressed(View view){
+        // Don't do anything if running
         if(!inProgress) {
             clearDigits();
             showTime();
@@ -129,7 +141,9 @@ public class RegularTimerActivity2 extends AppCompatActivity {
 
 
 
+    // The Start button was pressed
     public void startPressed(View view){
+        // Don't do anything if running
         if(!inProgress) {
             inProgress = true;
 
@@ -158,7 +172,9 @@ public class RegularTimerActivity2 extends AppCompatActivity {
     }
 
 
+    // The Stop button was pressed
     public void stopPressed(View view){
+        // Don't do anything if running
         if(inProgress) {
             cdt.cancel();
             inProgress = false;
@@ -166,7 +182,10 @@ public class RegularTimerActivity2 extends AppCompatActivity {
         }
     }
 
+
+    // The Reset button was pressed
     public void resetPressed(View view){
+        // Check if running
         if(inProgress) {
             cdt.cancel();
         }
@@ -184,13 +203,17 @@ public class RegularTimerActivity2 extends AppCompatActivity {
 
 
 
+    // Display the time
     public void showTime(){
+        // Put all internal digits into a string
         timerStr = digit6 + digit5 + ":" + digit4 + digit3 + ":" + digit2 + digit1;
+        // Display the string
         digitsTextView.setText(timerStr);
 
     }
 
 
+    // Convert the digits to milliseconds
     public long digitsToMs(){
         long total = (Integer.parseInt(digit1) * 1000); // 1's sec
         total += (Integer.parseInt(digit2) * 10 * 1000); // 10's sec
@@ -206,8 +229,10 @@ public class RegularTimerActivity2 extends AppCompatActivity {
 
 
 
+    // Convert the time to string digits
     public void msToDigits(long millis) {
 
+        // Format the time to a string
         String time = String.format("%02d:%02d:%02d",
                 TimeUnit.MILLISECONDS.toHours(millis),
                 TimeUnit.MILLISECONDS.toMinutes(millis) -
@@ -215,6 +240,7 @@ public class RegularTimerActivity2 extends AppCompatActivity {
                 TimeUnit.MILLISECONDS.toSeconds(millis) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
 
+        // Parse that time string to digits
         digit6 = time.substring(0, 1);
         digit5 = time.substring(1, 2);
         digit4 = time.substring(3, 4);
@@ -225,6 +251,7 @@ public class RegularTimerActivity2 extends AppCompatActivity {
     }
 
 
+    // Reset all the digits to 0
     public void clearDigits(){
         digit1 = "0";
         digit2 = "0";
@@ -234,6 +261,7 @@ public class RegularTimerActivity2 extends AppCompatActivity {
         digit6 = "0";
     }
 
+    // Make a copy of current digits
     public void copyDigits(){
         origDigit1 = digit1;
         origDigit2 = digit2;
@@ -244,6 +272,7 @@ public class RegularTimerActivity2 extends AppCompatActivity {
 
     }
 
+    // Set the Timer
     public void setTimer(long totalTime){
         cdt = new CountDownTimer(totalTime, 1000) {
             @Override

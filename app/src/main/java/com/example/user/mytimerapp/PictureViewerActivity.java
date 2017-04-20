@@ -12,7 +12,7 @@ import android.widget.ImageView;
 
 public class PictureViewerActivity extends AppCompatActivity {
 
-    // This is a way to identify intents if u have several
+    // This is a way to identify intents if i have several
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView myImageView;
 
@@ -23,6 +23,7 @@ public class PictureViewerActivity extends AppCompatActivity {
 
         myImageView = (ImageView) findViewById(R.id.imageView_ID);
 
+        // Show the image just taken
         Bitmap photo = null;
         try {
             photo = BitmapFactory.decodeStream(this.openFileInput("myImage"));
@@ -33,13 +34,14 @@ public class PictureViewerActivity extends AppCompatActivity {
 
 
 
+        //---------------------------------------------
+        //  Various attempts i may want for futrue
+        //---------------------------------------------
+
         // This is getting the bitmap from the extras
 //        byte[] bytes = getIntent().getByteArrayExtra("bitmapBytes");
 //        Bitmap photo = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 //        myImageView.setImageBitmap(photo);
-
-
-
 
 
 
@@ -52,6 +54,7 @@ public class PictureViewerActivity extends AppCompatActivity {
 
 
 
+    // Exits this activity
     public void goBackToCameraTimer(View view){
         Intent i = new Intent(this, CameraTimerActivity.class);
         startActivity(i);
@@ -66,13 +69,6 @@ public class PictureViewerActivity extends AppCompatActivity {
 
 
 
-//    // Launching the camera
-//    public void launchCamera(View view){
-//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//
-//        // Take a picture and pass teh results along to onActivityResult
-//        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
-//    }
 
 
     // If you want to return image taken

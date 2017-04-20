@@ -34,8 +34,6 @@ public class CameraTimerActivity extends AppCompatActivity {
     private TextView digitsTextView;
 
     Bitmap photo;
-//    private String fullPhoneNumber = "tel:5208704920";
-//    private String phoneNum = "";
     private String timerStr = "";
     private String digit1 = "0";
     private String digit2 = "0";
@@ -365,7 +363,7 @@ public class CameraTimerActivity extends AppCompatActivity {
 
 
 
-//            // This is how to pass a image thru extras
+//            // This is how to pass a image thru extras, but degrades the quality
 //            // Compressing image
 //            ByteArrayOutputStream stream = new ByteArrayOutputStream();
 //            photo.compress(Bitmap.CompressFormat.JPEG, 100, stream);
